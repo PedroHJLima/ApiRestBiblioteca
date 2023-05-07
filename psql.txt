@@ -1,0 +1,34 @@
+CREATE DATABASE biblioteca;
+\c biblioteca //conecta com biblioteca
+CREATE TABLE livros(
+    isbn VARCHAR(15) UNIQUE PRIMARY KEY NOT NULL,
+    nome VARCHAR(20) NOT NULL,
+    disponiveil BOOLEAN NOT NULL DEFAULT TRUE,
+    autor VARCHAR(50)[] NOT NULL,
+    editora VARCHAR(40) NOT NULL,
+    ano DATE NOT NULL
+);
+
+CREATE TABLE autor(
+    id SERIAL PRIMARY KEY NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    pais VARCHAR(20) NOT NULL
+);
+
+CREATE TABLE clientes(
+    matricula VARCHAR(10) UNIQUE PRIMARY KEY NOT NULL,
+    nome VARCHAR(50) NOT NULL,
+    telefone VARCHAR(20) NOT NULL
+);
+
+\l //mostra todas as databases
+\q //sai
+\cls //limpa o prompt
+\dt após conectar a uma database pra ver todas as relações
+
+Dados do banco:
+server: localhost
+database: postgres
+port: 5433
+username: postgres
+password:123456
