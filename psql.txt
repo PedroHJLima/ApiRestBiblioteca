@@ -1,3 +1,6 @@
+//if not exists
+//trabalhar com pg
+
 CREATE DATABASE biblioteca;
 \c biblioteca //conecta com biblioteca
 CREATE TABLE livros(
@@ -20,6 +23,9 @@ CREATE TABLE clientes(
     nome VARCHAR(50) NOT NULL,
     telefone VARCHAR(20) NOT NULL
 );
+
+#Observações sobre o método post: Valores entre aspas simples;
+INSERT INTO clientes(matricula,nome,telefone) VALUES ('01','Pedro','020220');
 
 \l //mostra todas as databases
 \q //sai
