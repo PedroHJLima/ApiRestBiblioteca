@@ -13,8 +13,11 @@ const getUsuarios = (req,res) => {
 
 //Posta os usuários na database e devolve um json do usuario criado
 const postUsuarios = (req,res) => {
+    //Req body é o corpo Json do postman, ele está criando essas 3 variaveis
+    //E buscando seus valores no postman
     const {matricula, nome, telefone } = req.body;
 
+    //As três variáveis criadas são utilizadas na parte azul, que por sua vez substituem, em ordem os $1,$2,$3
     pool.query('INSERT INTO clientes (matricula, nome, telefone) VALUES ($1,$2,$3) RETURNING *', [matricula, nome, telefone], (error, result) => {
         if (error) {
           throw error;
