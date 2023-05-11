@@ -1,7 +1,9 @@
 1- Como eu posso pôr o banco de dados no git pra importar em outro computador com tudo pronto?
     Ou eu preciso criar um novo banco de dados em cada computador?
+Aparentemente existe como colocar um if not exists pra criar bancos de dados. Pesquisar sobre.
 
 2- Todo banco de dados tem um usuário, senha e porta. Eu preciso adaptar o código toda vez em um novo computador?
+    Não.
 
 3- Como adicionar um atributo multivalorado contendo os autores? //Resolvido
     resposta: arrays

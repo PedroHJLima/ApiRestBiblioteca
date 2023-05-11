@@ -1,5 +1,5 @@
 const pool = require("../data-base.js");
-const queries = require("../queries/usuarioQueries")
+const queries = require("../queries/usuarioQueries.js")
 
 //Busca os usuários na database e devolve como json
 const getUsuarios = (req,res) => {
@@ -13,18 +13,24 @@ const getUsuarios = (req,res) => {
 
 //Posta os usuários na database e devolve um json do usuario criado
 const postUsuarios = (req,res) => {
-    const { matricula, nome, telefone } = request.body
+    const {matricula, nome, telefone } = req.body;
 
-    pool.query('INSERT INTO clientes (matricula, nome, telefone) VALUES (matricula = $1,nome = $2, telefone= $3) RETURNING *', [matricula, nome, telefone], (error, result) => {
+    pool.query('INSERT INTO clientes (matricula, nome, telefone) VALUES ($1,$2,$3) RETURNING *', [matricula, nome, telefone], (error, result) => {
         if (error) {
           throw error;
         }
-        res.status(201).send(`User added with ID: ${results.rows[0].id}`)
+        res.status(201).send(`Usuário adicionado, matrícula: ${result.rows[0].matricula}`)
       })
 };
+
+const deletaUsuario = (req, res) => {
+    
+
+}
 
 
 module.exports= {
     getUsuarios,
-    postUsuarios
+    postUsuarios,
+    deletaUsuario
 };
