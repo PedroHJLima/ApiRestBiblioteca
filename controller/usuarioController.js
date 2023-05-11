@@ -11,6 +11,19 @@ const getUsuarios = (req,res) => {
     })
 };
 
+const buscarUsuarioMatricula = (req,res) => {
+    //Reebe o ID a partir do request
+    const id = req.params.id;
+
+    //Usa o dado recebido pra consultar o banco de dados
+    pool.query('SELECT * FROM clientes WHERE matricula = $1',[id], (error,result) => {
+        if (error) {
+          throw error;
+        }
+        res.status(201).send(result.rows[0])
+      })
+};
+
 //Posta os usuários na database e devolve um json do usuario criado
 const postUsuarios = (req,res) => {
     //Req body é o corpo Json do postman, ele está criando essas 3 variaveis
@@ -26,14 +39,10 @@ const postUsuarios = (req,res) => {
       })
 };
 
-const deletaUsuario = (req, res) => {
-    
-
-}
 
 
 module.exports= {
     getUsuarios,
     postUsuarios,
-    deletaUsuario
+    buscarUsuarioMatricula
 };
