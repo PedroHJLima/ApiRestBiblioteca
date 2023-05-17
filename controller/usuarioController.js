@@ -39,10 +39,23 @@ const postUsuarios = (req,res) => {
       })
 };
 
+const deleteUsuario = (req,res) => {
+  //Reebe o ID a partir do request
+  const id = req.params.id;
+
+  //Usa o dado recebido pra consultar o banco de dados
+  pool.query('DELETE FROM clientes WHERE matricula = $1',[id], (error,result) => {
+      if (error) {
+        throw error;
+      }
+      res.status(201).send("Usuário de matrícula "+id+ " deletado!");
+    })
+};
 
 
 module.exports= {
     getUsuarios,
     postUsuarios,
-    buscarUsuarioMatricula
+    buscarUsuarioMatricula,
+    deleteUsuario
 };

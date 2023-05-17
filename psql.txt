@@ -6,10 +6,17 @@ CREATE DATABASE biblioteca;
 CREATE TABLE livros(
     isbn VARCHAR(15) UNIQUE PRIMARY KEY NOT NULL,
     nome VARCHAR(20) NOT NULL,
-    disponiveil BOOLEAN NOT NULL DEFAULT TRUE,
-    autor VARCHAR(50)[] NOT NULL,
-    editora VARCHAR(40) NOT NULL,
-    ano DATE NOT NULL
+    disponivel BOOLEAN NOT NULL DEFAULT TRUE,
+    autorID INT NOT NULL,
+    editoraID INT NOT NULL,
+    ano DATE NOT NULL,
+    FOREIGN KEY (autorID) REFERENCES autor(id),
+    FOREIGN KEY (editoraID) REFERENCES editora(id)
+);
+
+CREATE TABLE editora(
+    id SERIAL PRIMARY KEY NOT NULL,
+    nome VARCHAR(25) NOT NULL
 );
 
 CREATE TABLE autor(
@@ -19,7 +26,7 @@ CREATE TABLE autor(
 );
 
 CREATE TABLE clientes(
-    matricula VARCHAR(10) PRIMARY KEY NOT NULL,
+    matricula VARCHAR(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
     telefone VARCHAR(20) NOT NULL
 );
