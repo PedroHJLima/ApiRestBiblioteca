@@ -48,6 +48,10 @@ const deleteLivro = (req,res) => {
       })
   };
 
+  //Consultar livro por autor:
+
+  //Consultar livro por editora:
+
 
 module.exports= {
     getLivros,

@@ -1,5 +1,4 @@
 const pool = require("../data-base.js");
-const queries = require("../queries/usuarioQueries.js")
 
 //Busca os usuários na database e devolve como json
 const getUsuarios = (req,res) => {

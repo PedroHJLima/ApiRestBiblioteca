@@ -22,7 +22,7 @@ const postEditora = (req,res) => {
 };
 
 const deleteEditora = (req,res) => {
-    //Reebe o ID a partir do request
+    //Recebe o ID a partir do request
     const id = req.params.id;
   
     //Só vai ser possível deletar a editora se nenhum livro estiver nela!
