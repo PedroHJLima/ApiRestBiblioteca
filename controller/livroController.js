@@ -52,6 +52,7 @@ const deleteLivro = (req,res) => {
 
   //Consultar livro por editora:
 
+  //Retirar livro se aluno tem até 3 livros
 
 module.exports= {
     getLivros,

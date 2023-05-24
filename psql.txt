@@ -10,8 +10,11 @@ CREATE TABLE livros(
     autorID INT NOT NULL,
     editoraID INT NOT NULL,
     ano DATE NOT NULL,
+    usuarioID VARCHAR(10)
+    FOREIGN KEY (usuarioID) REFERENCES clientes(matricula),
     FOREIGN KEY (autorID) REFERENCES autor(id),
     FOREIGN KEY (editoraID) REFERENCES editora(id)
+
 );
 
 CREATE TABLE editora(
@@ -28,7 +31,8 @@ CREATE TABLE autor(
 CREATE TABLE clientes(
     matricula VARCHAR(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
     nome VARCHAR(50) NOT NULL,
-    telefone VARCHAR(20) NOT NULL
+    telefone VARCHAR(20) NOT NULL,
+    contaLivros INT(1)
 );
 
 #Observações sobre o método post: Valores entre aspas simples;
@@ -53,3 +57,7 @@ password:123456
 	"editoraID":1,
 	"ano":"2000-12-24"
 }
+
+conceito B: Sistema de login
+
+Conceito A: Todo processo de login

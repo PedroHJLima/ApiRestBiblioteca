@@ -7,3 +7,10 @@ Aparentemente existe como colocar um if not exists pra criar bancos de dados. Pe
 
 3- Como adicionar um atributo multivalorado contendo os autores? //Resolvido
     resposta: arrays
+
+4- Como fazer a retirada de livro?
+    Através de um contador no aluno e um clienteID no livro
+
+5- Como lidar com o login?
+    OAuth + JWT // aula 12
+    Utilizar jsonwebtoken (npm i jsonwebtoken)
