@@ -14,3 +14,7 @@ Aparentemente existe como colocar um if not exists pra criar bancos de dados. Pe
 5- Como lidar com o login?
     OAuth + JWT // aula 12
     Utilizar jsonwebtoken (npm i jsonwebtoken)
+
+6- cada aluno precisa de um login ou só o administrador?
+    Gerar token sem o banco pra garantir o B (aula 12)
+    Gerar token a partir do banco de dados de cada aluno antes de retirar um livro pra conseguir o A(internet)
