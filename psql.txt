@@ -3,19 +3,6 @@
 
 CREATE DATABASE biblioteca;
 \c biblioteca //conecta com biblioteca
-CREATE TABLE livros(
-    isbn VARCHAR(15) UNIQUE PRIMARY KEY NOT NULL,
-    nome VARCHAR(20) NOT NULL,
-    disponivel BOOLEAN NOT NULL DEFAULT TRUE,
-    autorID INT NOT NULL,
-    editoraID INT NOT NULL,
-    ano DATE NOT NULL,
-    usuarioID VARCHAR(10)
-    FOREIGN KEY (usuarioID) REFERENCES clientes(matricula),
-    FOREIGN KEY (autorID) REFERENCES autor(id),
-    FOREIGN KEY (editoraID) REFERENCES editora(id)
-
-);
 
 CREATE TABLE editora(
     id SERIAL PRIMARY KEY NOT NULL,
@@ -29,10 +16,23 @@ CREATE TABLE autor(
 );
 
 CREATE TABLE clientes(
-    matricula VARCHAR(10) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    matricula SERIAL PRIMARY KEY NOT NULL,
     nome VARCHAR(50) NOT NULL,
     telefone VARCHAR(20) NOT NULL,
-    contaLivros INT(1)
+    contaLivros INT
+);
+
+CREATE TABLE livros(
+    isbn VARCHAR(15) UNIQUE PRIMARY KEY NOT NULL,
+    nome VARCHAR(20) NOT NULL,
+    disponivel BOOLEAN NOT NULL DEFAULT TRUE,
+    autorID INT NOT NULL,
+    editoraID INT NOT NULL,
+    ano DATE NOT NULL,
+    usuarioID INT,
+    FOREIGN KEY (usuarioID) REFERENCES clientes(matricula),
+    FOREIGN KEY (autorID) REFERENCES autor(id),
+    FOREIGN KEY (editoraID) REFERENCES editora(id)
 );
 
 #Observações sobre o método post: Valores entre aspas simples;

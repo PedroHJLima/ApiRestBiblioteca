@@ -11,8 +11,9 @@ const getLivros = (req,res) => {
 
 const getLivrosById = (req,res) => {
     const id = req.params.id
+    const isbn = req.params.isbn
     //Usa o dado recebido pra consultar o banco de dados
-    pool.query('SELECT * FROM livros WHERE isbn = $1',[id], (error,result) => {
+    pool.query('UPDATE livros SET usuarioID = $1 WHERE isbn = $2',[id], (error,result) => {
         if (error) {
           throw error;
         }
