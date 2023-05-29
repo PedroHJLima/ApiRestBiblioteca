@@ -1,6 +1,6 @@
 const pool = require("../data-base.js");
 
-const getAutores = (req,res) => {
+async function getAutores (req,res) {
     pool.query('SELECT * FROM autor', (error, result) => {
         if (error) {
           throw error;
@@ -9,7 +9,7 @@ const getAutores = (req,res) => {
       })
 };
 
-const buscaAutorById = (req,res) => {
+async function buscaAutorById (req,res) {
     const id = req.params.id;
   
     pool.query('SELECT * FROM autor WHERE id = $1',[id], (error,result) => {
@@ -28,7 +28,7 @@ const buscaAutorById = (req,res) => {
 
 };
 
-const postAutor = (req,res) => {
+async function postAutor (req,res) {
     //Nome e país são strings; Id INT autoincrement
     const {nome,pais} = req.body;
 
@@ -40,7 +40,7 @@ const postAutor = (req,res) => {
       })
 };
 
-const deleteAutor = (req,res) => {
+async function deleteAutor (req,res) {
     //Nome e país são strings; Id INT autoincrement
     const id = req.params.id;
   

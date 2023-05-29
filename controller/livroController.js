@@ -1,6 +1,6 @@
 const pool = require("../data-base.js");
 
-const getLivros = (req,res) => {
+async function getLivros (req,res) {
     pool.query("SELECT * FROM livros", (error, result) => {
         if (error){
              throw error;
@@ -9,20 +9,41 @@ const getLivros = (req,res) => {
     })
 };
 
-const getLivrosById = (req,res) => {
-    const id = req.params.id
+async function getLivrosById (req,res) {
     const isbn = req.params.isbn
     //Usa o dado recebido pra consultar o banco de dados
-    pool.query('UPDATE livros SET usuarioID = $1 WHERE isbn = $2',[id], (error,result) => {
+    pool.query('SELECTS * FROM livros WHERE isbn = $1',[isbn], (error,result) => {
         if (error) {
           throw error;
         }
-        res.status(201).send(result.rows[0])
+        res.status(201).send(`Livro ${result.rows[0]}`)
       })
     
 };
 
-const postLivros = (req,res) => {
+async function getLivrosByDisponivel (req,res) {
+  const isbn = req.params.usuarioID
+  //Usa o dado recebido pra consultar o banco de dados
+  pool.query('SELECTS * FROM livros WHERE usuarioID = $1',[usuarioID], (error,result) => {
+      if (error) {
+        throw error;
+      }
+      res.status(201).send(`Livro ${result.rows[0]}`)
+    })
+  
+};
+
+async function getLivrosByAuthor (req,res) {
+  id = req.params.id
+  pool.query("SELECT * FROM livros WHERE autorID = $1",[id], (error, result) => {
+      if (error){
+           throw error;
+      }
+      res.status(200).json(result.rows)
+  })
+};
+
+async function postLivros (req,res) {
     const {isbn, nome, autorID, editoraID,ano  } = req.body;
 
     //Pra criar um livro é preciso ter ao menos um autor e uma editora;
@@ -36,7 +57,7 @@ const postLivros = (req,res) => {
       })
 };
 
-const deleteLivro = (req,res) => {
+async function deleteLivro (req,res){
     //Reebe o ID a partir do request
     const isbn = req.params.id;
   
@@ -59,5 +80,7 @@ module.exports= {
     getLivros,
     getLivrosById,
     postLivros,
-    deleteLivro
+    deleteLivro,
+    getLivrosByAuthor,
+    getLivrosByDisponivel
 };
