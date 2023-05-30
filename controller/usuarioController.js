@@ -24,8 +24,7 @@ async function buscarUsuarioMatricula (req,res) {
 };
 
 async function retiraLivro(req, res) {
-  const id = req.params.id;
-  const isbn = req.params.isbn;
+  const {id, isbn} = req.body;
 
   // Verificar se o aluno já tem 3 livros
   pool.query('SELECT * FROM clientes WHERE id = $1', [id], (error, result) => {
@@ -57,9 +56,8 @@ async function retiraLivro(req, res) {
 }
 
 async function devolveLivro(req, res) {
-  const id = req.params.id;
-  const isbn = req.params.isbn;
-
+  const {id, isbn} = req.body;
+  
   // Verificar se o aluno já tem 3 livros
   pool.query('SELECT * FROM clientes WHERE id = $1', [id], (error, result) => {
     if (error) {
