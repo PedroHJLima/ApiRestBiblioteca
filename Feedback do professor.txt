@@ -1,0 +1,15 @@
+Feedback:
+
+usar thunderclient em aula.
+
+Faltou um update pra cada objeto no crud;
+login: usuario e senha pra verificar e receber a chave;
+Melhorar status code, principalmente de erros(400,404) só o post vai 201;
+Join na editora e autor quando chamar o livro;
+Tratar constraint unique (clientes) pra que não quebre quando registrar duas pessoas com a mesma matricula;
+auth jwt usuarios do banco;
+transação (begin comit);
+Deploy(deixar no ar) usando vercell.
+
+opcional: Automatizar o sql com um controller proprio
+teste usando if not exist sql(rotas )

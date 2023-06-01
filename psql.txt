@@ -1,12 +1,12 @@
 CREATE DATABASE biblioteca;
-\c biblioteca //conecta com biblioteca
+\c biblioteca
 
-CREATE TABLE editora(
+CREATE TABLE editoras(
     id SERIAL PRIMARY KEY NOT NULL,
     nome VARCHAR(25) NOT NULL
 );
 
-CREATE TABLE autor(
+CREATE TABLE autores(
     id SERIAL PRIMARY KEY NOT NULL,
     nome VARCHAR(50) NOT NULL,
     pais VARCHAR(20) NOT NULL
@@ -16,7 +16,7 @@ CREATE TABLE clientes(
     matricula SERIAL PRIMARY KEY NOT NULL,
     nome VARCHAR(50) NOT NULL,
     telefone VARCHAR(20) NOT NULL,
-    contaLivros INT
+    contaLivros INT DEFAULT 0
 );
 
 CREATE TABLE livros(
@@ -32,6 +32,20 @@ CREATE TABLE livros(
     FOREIGN KEY (editoraID) REFERENCES editora(id)
 );
 
+INSERT INTO editoras (nome) VALUES ("editora1")
+INSERT INTO autores (nome,pais) VALUES ("autor1","Brasil")
+
+
+INSERT INTO livros(isbn, nome, autorID, editoraID, ano)
+VALUES ("123", "livro1", 1, 1,"2000-01-01");
+
+
+
+
+
+INSERT INTO clientes()
+
+//Deixar populado
 
 \l //mostra todas as databases
 \q //sai

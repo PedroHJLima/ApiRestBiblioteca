@@ -27,7 +27,7 @@ async function retiraLivro(req, res) {
   const {id, isbn} = req.body;
 
   // Verificar se o aluno já tem 3 livros
-  pool.query('SELECT * FROM clientes WHERE id = $1', [id], (error, result) => {
+  pool.query('SELECT * FROM clientes WHERE matricula = $1', [id], (error, result) => {
     if (error) {
       throw error;
     }

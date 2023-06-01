@@ -12,23 +12,22 @@ async function getLivros (req,res) {
 async function getLivrosById (req,res) {
     const isbn = req.params.isbn
     //Usa o dado recebido pra consultar o banco de dados
-    pool.query('SELECTS * FROM livros WHERE isbn = $1',[isbn], (error,result) => {
+    pool.query('SELECT * FROM livros WHERE isbn = $1',[isbn], (error,result) => {
         if (error) {
           throw error;
         }
-        res.status(201).send(`Livro ${result.rows[0]}`)
+        res.status(201).json(result.rows)
       })
     
 };
 
 async function getLivrosByDisponivel (req,res) {
-  const isbn = req.params.usuarioID
-  //Usa o dado recebido pra consultar o banco de dados
-  pool.query('SELECTS * FROM livros WHERE usuarioID = $1',[usuarioID], (error,result) => {
+  //Devolve livros disponiveis
+  pool.query('SELECT * FROM livros WHERE disponivel = True', (error,result) => {
       if (error) {
         throw error;
       }
-      res.status(201).send(`Livro ${result.rows[0]}`)
+      res.status(201).json(result.rows)
     })
   
 };
@@ -39,7 +38,7 @@ async function getLivrosByAuthor (req,res) {
       if (error){
            throw error;
       }
-      res.status(200).json(result.rows)
+      res.status(200).json(result.rows[0])
   })
 };
 
@@ -53,7 +52,7 @@ async function postLivros (req,res) {
         if (error) {
           throw error;
         }
-        res.status(201).send(`Livro adicionado adicionado!: ${result.rows[0]}`)
+        res.status(201).json(result.rows)
       })
 };
 
@@ -66,15 +65,10 @@ async function deleteLivro (req,res){
         if (error) {
           throw error;
         }
-        res.status(201).send("Livro de isbn "+isbn+ " deletado!");
+        res.status(200).send("Livro de isbn "+isbn+ " deletado!");
       })
   };
 
-  //Consultar livro por autor:
-
-  //Consultar livro por editora:
-
-  //Retirar livro se aluno tem até 3 livros
 
 module.exports= {
     getLivros,
