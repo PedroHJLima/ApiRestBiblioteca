@@ -56,6 +56,17 @@ async function postLivros (req,res) {
       })
 };
 
+async function putLivros (req,res) {
+  const {isbn,nome,autorID,editoraID,ano} = req.body;
+
+  pool.query('UPDATE livros SET nome = $1,autorID = $2,editoraID=$3, ano = $4 WHERE isbn = $5 RETURNING *', [nome,autorID,editoraID,ano,isbn], (error, result) => {
+      if (error) {
+        throw error;
+      }
+      res.status(200).send(`Editora alterada!: ${result.rows[0].nome}`)
+    })
+};
+
 async function deleteLivro (req,res){
     //Reebe o ID a partir do request
     const isbn = req.params.id;
@@ -76,5 +87,6 @@ module.exports= {
     postLivros,
     deleteLivro,
     getLivrosByAuthor,
-    getLivrosByDisponivel
+    getLivrosByDisponivel,
+    putLivros
 };

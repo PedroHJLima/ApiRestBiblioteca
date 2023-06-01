@@ -9,6 +9,7 @@ router.get("/:isbn",livroController.getLivrosById);
 router.get("/disponivel",livroController.getLivrosByDisponivel);
 router.get("/autor/:id",livroController.getLivrosByAuthor);
 router.post("/",livroController.postLivros);
+router.put("/",livroController.putLivros);
 router.delete("/:id",livroController.deleteLivro);
 
 module.exports = router;

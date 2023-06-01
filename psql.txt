@@ -28,15 +28,16 @@ CREATE TABLE livros(
     ano DATE NOT NULL,
     usuarioID INT,
     FOREIGN KEY (usuarioID) REFERENCES clientes(matricula),
-    FOREIGN KEY (autorID) REFERENCES autor(id),
-    FOREIGN KEY (editoraID) REFERENCES editora(id)
+    FOREIGN KEY (autorID) REFERENCES autores(id),
+    FOREIGN KEY (editoraID) REFERENCES editoras(id)
 );
 
-INSERT INTO editoras (nome) VALUES ("editora1")
-INSERT INTO autores (nome,pais) VALUES ("autor1","Brasil")
-INSERT INTO livros(isbn, nome, autorID, editoraID, ano)
+\c biblioteca
+INSERT INTO editoras(nome) VALUES("editora1");
+INSERT INTO autores (nome,pais) VALUES ("autor1","Brasil");
+INSERT INTO livros(isbn, nome, autorID, editoraID, ano);
 VALUES ("123", "livro1", 1, 1,"2000-01-01");
-INSERT INTO clientes() VALUES()
+INSERT INTO clientes(nome,telefone) VALUES("pedro","12345");
 
 
 //Deixar populado

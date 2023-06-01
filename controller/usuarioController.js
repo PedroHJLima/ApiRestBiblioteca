@@ -1,4 +1,5 @@
 const pool = require("../data-base.js");
+const { post } = require("../rotas/editoraRota.js");
 
 //Busca os usuários na database e devolve como json
 async function getUsuarios (req,res) {
@@ -114,6 +115,17 @@ async function postUsuarios (req,res) {
       })
 };
 
+async function putUsuarios (req,res) {
+  const {matricula,nome,telefone} = req.body;
+
+  pool.query('UPDATE clientes SET nome = $1,telefone = $2 WHERE matricula = $3 RETURNING *', [nome,telefone,matricula], (error, result) => {
+      if (error) {
+        throw error;
+      }
+      res.status(200).send(`Livro alterado!: ${result.rows[0].nome}`)
+    })
+};
+
 async function deleteUsuario (req,res) {
   //Reebe o ID a partir do request
   const id = req.params.id;
@@ -134,5 +146,6 @@ module.exports= {
     buscarUsuarioMatricula,
     deleteUsuario,
     retiraLivro,
-    devolveLivro
+    devolveLivro,
+    postUsuarios
 };

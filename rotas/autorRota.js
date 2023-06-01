@@ -6,6 +6,7 @@ const router = Router();
 router.get("/",autorController.getAutores);
 router.get("/:id",autorController.buscaAutorById);
 router.post("/",autorController.postAutor);
+router.put("/",autorController.putAutor);
 router.delete("/",autorController.deleteAutor);
 
 
