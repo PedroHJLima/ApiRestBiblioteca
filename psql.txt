@@ -34,16 +34,10 @@ CREATE TABLE livros(
 
 INSERT INTO editoras (nome) VALUES ("editora1")
 INSERT INTO autores (nome,pais) VALUES ("autor1","Brasil")
-
-
 INSERT INTO livros(isbn, nome, autorID, editoraID, ano)
 VALUES ("123", "livro1", 1, 1,"2000-01-01");
+INSERT INTO clientes() VALUES()
 
-
-
-
-
-INSERT INTO clientes()
 
 //Deixar populado
 
