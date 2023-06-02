@@ -33,14 +33,15 @@ CREATE TABLE livros(
 );
 
 \c biblioteca
-INSERT INTO editoras(nome) VALUES("editora1");
-INSERT INTO autores (nome,pais) VALUES ("autor1","Brasil");
+INSERT INTO editoras(nome) VALUES('editora1');
+INSERT INTO autores (nome,pais) VALUES ('autor1","Brasil');
 INSERT INTO livros(isbn, nome, autorID, editoraID, ano);
-VALUES ("123", "livro1", 1, 1,"2000-01-01");
-INSERT INTO clientes(nome,telefone) VALUES("pedro","12345");
+VALUES ('123', 'livro1', 1, 1,'2000-01-01');
+INSERT INTO clientes(nome,telefone) VALUES('pedro','12345');
 
 
 //Deixar populado
+O erro na hora de popular é que pra usar string nos valores, deve-se usar '' e não ""
 
 \l //mostra todas as databases
 \q //sai

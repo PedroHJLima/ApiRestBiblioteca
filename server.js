@@ -5,7 +5,7 @@ const livroRota = require('./rotas/livroRota.js')
 const usuarioRota = require("./rotas/usuarioRota")
 const editoraRota = require("./rotas/editoraRota")
 const autorRota = require("./rotas/autorRota")
-const authMiddleware = require('./middleware/middleware.js')
+const loginRota = require('./rotas/loginRota')
 
 
 app.use(express.json());
@@ -14,7 +14,7 @@ app.get("/",(req,res) => {
     res.send("Hello World");
 });
 
-app.use(authMiddleware.verificarToken);
+app.use("/api/login", loginRota);
 
 app.get("/",(req,res) => {
     res.send("Tem chave");

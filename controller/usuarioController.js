@@ -20,7 +20,7 @@ async function buscarUsuarioMatricula (req,res) {
         if (error) {
           throw error;
         }
-        res.status(201).send(result.rows[0])
+        res.status(200).send(result.rows[0])
       })
 };
 
@@ -40,14 +40,14 @@ async function retiraLivro(req, res) {
         if (error) {
           throw error;
         }
-        res.status(201).send(result.rows[0]);
+        res.status(200).send(result.rows[0]);
       });
 
       pool.query('UPDATE clientes SET contaLivros = contaLivros + 1 WHERE id = $1', [id], (error, result) => {
         if (error) {
           throw error;
         }
-        res.status(201).send(result.rows[0]);
+        res.status(200).send(result.rows[0]);
       });
     } else {
       // O aluno já tem 3 livros, envie uma resposta informando que ele atingiu o limite
@@ -79,14 +79,14 @@ async function devolveLivro(req, res) {
           if (error) {
             throw error;
           }
-          res.status(201).send(result.rows[0]);
+          res.status(200).send(result.rows[0]);
         });
 
         pool.query('UPDATE clientes SET contaLivros = contaLivros - 1 WHERE id = $1', [id], (error, result) => {
           if (error) {
             throw error;
           }
-          res.status(201).send(result.rows[0]);
+          res.status(200).send(result.rows[0]);
         });
         }
         else{
@@ -135,7 +135,7 @@ async function deleteUsuario (req,res) {
       if (error) {
         throw error;
       }
-      res.status(201).send("Usuário de matrícula "+id+ " deletado!");
+      res.status(200).send("Usuário de matrícula "+id+ " deletado!");
     })
 };
 

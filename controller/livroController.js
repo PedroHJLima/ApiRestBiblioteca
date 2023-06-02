@@ -48,12 +48,17 @@ async function postLivros (req,res) {
     //Pra criar um livro é preciso ter ao menos um autor e uma editora;
     //AutorID e EditoraID são inteiros FK de suas respectivas tabelas;
     //Ano tem que ser em data AAAA-MM-DD;
-    pool.query('INSERT INTO livros (isbn, nome, autorID, editoraID,ano ) VALUES ($1,$2,$3,$4,$5) RETURNING *', [isbn, nome, autorID, editoraID,ano], (error, result) => {
-        if (error) {
-          throw error;
-        }
-        res.status(201).json(result.rows)
-      })
+    try{
+      pool.query('INSERT INTO livros (isbn, nome, autorID, editoraID,ano ) VALUES ($1,$2,$3,$4,$5) RETURNING *', [isbn, nome, autorID, editoraID,ano], (error, result) => {
+          if (error) {
+            throw error;
+          }
+          res.status(201).json(result.rows)
+        })
+    }
+    catch{
+      res.send("impossivel")
+    }
 };
 
 async function putLivros (req,res) {

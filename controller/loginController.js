@@ -8,7 +8,7 @@ async function autenticar(req, res) {
         const tokenX = jwt.sign({
             userId: 1,
             username: 'admin'
-          }, 'Sen@crs2023', { expiresIn: '1h' });
+          }, 'senac', { expiresIn: '1h' });
           res.status(201).json({token: tokenX});
     }
     else {

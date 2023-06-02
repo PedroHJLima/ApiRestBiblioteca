@@ -5,7 +5,7 @@ async function getEditoras (req,res) {
         if (error) {
           throw error;
         }
-        res.status(201).send(result.rows);
+        res.status(200).send(result.rows);
       })
 };
 
@@ -41,7 +41,7 @@ async function deleteEditora (req,res) {
         if (error) {
           throw error;
         }
-        res.status(201).send("Editora de id "+id+ " deletada!");
+        res.status(200).send("Editora de id "+id+ " deletada!");
       })
   };
 

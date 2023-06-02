@@ -5,7 +5,7 @@ async function getAutores (req,res) {
         if (error) {
           throw error;
         }
-        res.status(201).send(result.rows);
+        res.status(200).send(result.rows);
       })
 };
 
@@ -16,14 +16,14 @@ async function buscaAutorById (req,res) {
         if (error) {
           throw error;
         }
-        res.status(201).send(result.rows[0]);
+        res.status(200).send(result.rows[0]);
       })
     //Quero os livros no nome dele também
     pool.query('SELECT * FROM livros WHERE autores = $1',[id], (error,result) => {
         if (error) {
           throw error;
         }
-        res.status(201).send(result.rows[0]);
+        res.status(200).send(result.rows[0]);
       })
 
 };
@@ -61,7 +61,7 @@ async function deleteAutor (req,res) {
         if (error) {
           throw error;
         }
-        res.status(201).send("Autor de id "+id+ " deletado!");
+        res.status(200).send("Autor de id "+id+ " deletado!");
       })
 };
 

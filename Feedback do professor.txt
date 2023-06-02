@@ -2,9 +2,9 @@ Feedback:
 
 usar thunderclient em aula.
 
-Faltou um update pra cada objeto no crud;
-login: usuario e senha pra verificar e receber a chave;
-Melhorar status code, principalmente de erros(400,404) só o post vai 201;
+Faltou um update pra cada objeto no crud; //Feito
+login: usuario e senha pra verificar e receber a chave; //Necessita teste
+Melhorar status code, principalmente de erros(400,404) só o post vai 201; //atualizado
 Join na editora e autor quando chamar o livro;
 Tratar constraint unique (clientes) pra que não quebre quando registrar duas pessoas com a mesma matricula;
 auth jwt usuarios do banco;
