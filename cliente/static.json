@@ -1,0 +1,6 @@
+{
+    "root": "ApiRestBiblioteca/",
+    "routes": {
+      "/**": "cliente/public/index.html"
+    }
+  }

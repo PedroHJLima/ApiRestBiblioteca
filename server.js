@@ -24,6 +24,6 @@ app.use("/api/usuarios",usuarioRota);
 app.use("/api/editoras",editoraRota);
 app.use("/api/autores",autorRota);
 
-app.listen (3000, () => { 
+app.listen (3001, () => { 
     console.log("Servidor Iniciado");
 })
