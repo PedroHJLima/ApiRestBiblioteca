@@ -1,14 +1,19 @@
 const express = require('express');
+const cors = require('cors'); // Importe o pacote cors
 const app = express();
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+    next();
+  })
 
 const livroRota = require('./rotas/livroRota.js')
 const usuarioRota = require("./rotas/usuarioRota")
 const editoraRota = require("./rotas/editoraRota")
 const autorRota = require("./rotas/autorRota")
 const loginRota = require('./rotas/loginRota')
-
-
-app.use(express.json());
 
 app.get("/",(req,res) => {
     res.send("Hello World");
